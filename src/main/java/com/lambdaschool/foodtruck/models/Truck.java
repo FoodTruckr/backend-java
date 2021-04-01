@@ -21,7 +21,7 @@ public class Truck {
     private long longitude;
     private String address;
     private String city;
-    private String  state;
+    private String state;
     private int zipcode;
     private Date arrivaldate;
     private Time arrivaltime;
@@ -35,6 +35,16 @@ public class Truck {
     @ManyToMany()
     @JoinTable(name = "truckmenu", joinColumns = @JoinColumn(name = "truckid"),inverseJoinColumns = @JoinColumn(name = "menuitemid"))
     private List<MenuItems> menuItems = new ArrayList<>();
+
+    @ManyToMany()
+    @JoinTable(name = "truckcuisine", joinColumns = @JoinColumn(name = "truckid"), inverseJoinColumns = @JoinColumn(name = "cuisinetypeid"))
+    private List<CuisineType> cuisineTypes = new ArrayList<>();
+
+    @OneToOne
+    private CustomerReview customerReview;
+
+    @ManyToMany(mappedBy = "favTrucks")
+    private List<User> users = new ArrayList<>();
 
     public Truck() {
     }
@@ -56,7 +66,29 @@ public class Truck {
         this.user = user;
     }
 
+    public CustomerReview getCustomerReview() {
+        return customerReview;
+    }
 
+    public void setCustomerReview(CustomerReview customerReview) {
+        this.customerReview = customerReview;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<CuisineType> getCuisineTypes() {
+        return cuisineTypes;
+    }
+
+    public void setCuisineTypes(List<CuisineType> cuisineTypes) {
+        this.cuisineTypes = cuisineTypes;
+    }
 
     public long getTruckid() {
         return truckid;

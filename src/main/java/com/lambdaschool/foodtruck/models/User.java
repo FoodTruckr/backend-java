@@ -1,6 +1,5 @@
 package com.lambdaschool.foodtruck.models;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,6 +34,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MenuItems> menuItems = new ArrayList<>();
 
+    @ManyToMany()
+    @JoinTable(name = "favoritetrucks", joinColumns = @JoinColumn(name = "userid"),inverseJoinColumns = @JoinColumn(name = "truckid"))
+    private List<Truck> favTrucks = new ArrayList<>();
+
     public User() {
     }
 
@@ -43,7 +46,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-
     }
 
 

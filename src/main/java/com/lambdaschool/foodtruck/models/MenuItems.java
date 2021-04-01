@@ -16,7 +16,7 @@ public class MenuItems {
     private String itemname;
 
     private String itemdescription;
-    private long price;
+    private double price;
     private String menuitemphotourl;
 
     @ManyToOne
@@ -79,11 +79,11 @@ public class MenuItems {
         this.itemdescription = itemdescription;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

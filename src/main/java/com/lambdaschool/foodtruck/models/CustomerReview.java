@@ -29,6 +29,8 @@ public class CustomerReview {
         this.truck = truck;
     }
 
+
+
     public long getCustomerreviewid() {
         return customerreviewid;
     }
